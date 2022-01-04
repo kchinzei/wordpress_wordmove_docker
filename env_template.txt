@@ -1,4 +1,5 @@
 # Use this file and save as .env
+# If an '\' used, replace by '\\\\'. If a '$' used, prepend an '\'.
 #
 # -------------------------------------------
 # mysql container setting
@@ -11,22 +12,18 @@ MYSQL_PASSWORD=""
 MYSQL_ROOT_PASSWORD=""
 
 WORDPRESS_PORT=8000
-SSL_PORT=10122
-
-# -------------------------------------------
-# wordmove container setting
-# -------------------------------------------
 
 # -------------------------------------------
 # Production site setting
 # -------------------------------------------
 
-# It's also used as prefix of container names
+# It's also used as project name to distinguish containers
 PRODUCTION_NAME=""
+COMPOSE_PROJECT_NAME=${PRODUCTION_NAME}
+
 # URL of production site
 PRODUCTION_URL="https://foo.jp"
 
-# If an '\' used, replace by '\\\\'. If a '$' used, prepend an '\'.
 # wordpress path at production site
 PRODUCTION_DIR_PATH="/site/wwwroot/"
 # Mysql DB for production site
