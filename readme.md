@@ -6,7 +6,7 @@
 
 ```shell
 > docker-compose up -d
-> docker exec -it (PRODUCTION_NAME)_wm /bin/bash
+> docker exec -it (PRODUCTION_NAME)_wordmove_1 /bin/bash
 root@brabra: ./mysql_fix.sh
 root@brabra: wordmove pull --all
 root@brabra: exit
@@ -40,8 +40,8 @@ There are three containers as defined in `docker-compose.yml`.
 - `wm`: Wordmove host.
 
 You need to login to wordmove container (by `docker exec -it...`).
-Before using wordmove, you must initialize `mysql` database by `mysql_fix.sh`,
-because the WordPress database is not made until you initialize it via web interface.
+Before using wordmove, you must modify user permission by `mysql` database by `mysql_fix.sh`,
+because mysql 5.7 or greater narrows user permission for processing.
 Shell script `mysql_fix.sh` does a least job for wordmove for you.
 
 After that you can use wordmove.
