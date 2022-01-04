@@ -50,7 +50,7 @@ services:
       - ./data/wordpress:/var/www/html
     restart: always
     environment:
-      WORDPRESS_DB_HOST: "db:${MYSQL_PORT}"
+      WORDPRESS_DB_HOST: "db:3306"
       WORDPRESS_DB_NAME: "${MYSQL_DATABASE}"
       WORDPRESS_DB_USER: "${MYSQL_USER}"
       WORDPRESS_DB_PASSWORD: "${MYSQL_PASSWORD}"
@@ -72,7 +72,7 @@ services:
       LOCAL_DB_PASSWORD: "${MYSQL_PASSWORD}"
       LOCAL_DB_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
       LOCAL_DB_HOST: "db"
-      LOCAL_DB_PORT: ${MYSQL_PORT}
+      LOCAL_DB_PORT: 3306
 
       PRODUCTION_URL: "${PRODUCTION_URL}"
       PRODUCTION_DIR_PATH: "${PRODUCTION_DIR_PATH}"
@@ -85,8 +85,6 @@ services:
       PRODUCTION_FTP_USER: "${PRODUCTION_FTP_USER}"
       PRODUCTION_FTP_PASSWORD: "${PRODUCTION_FTP_PASSWORD}"
       PRODUCTION_FTP_PORT: ${PRODUCTION_FTP_PORT}
-    # ports:
-    #  - "${SSL_PORT}:22"
     # To access this ssh,
     #   docker exec -it (container name of wordmove) /bin/bash
     # Container name of wordmove should look like
