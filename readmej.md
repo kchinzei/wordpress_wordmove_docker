@@ -6,7 +6,7 @@ English version [here](readme.md).
 
 ```shell
 > docker-compose up -d
-> docker exec -it (PRODUCTION_NAME)_wm /bin/bash
+> docker exec -it (PRODUCTION_NAME)_wordmove_1 /bin/bash
 root@brabra: ./mysql_fix.sh
 root@brabra: wordmove pull --all
 root@brabra: exit
@@ -38,8 +38,8 @@ ftpはセキュアでなく，wordmoveでは既にオブソリートです．ssh
 - `wm`: wordmoveホスト
 
 Wordmoveを使うには，`wm`コンテナにログインする (`docker exec -it...`)．
-Wordmoveを使い始める前に，`mysql_fix.sh`を使って`mysql`データベースを初期化する．
-WordPressのデータはwebインターフェースを使って初期化するまでできていないためである．
+Wordmoveを使い始める前に，`mysql_fix.sh`を使って`mysql`データベースのユーザー権限を変更する．
+mysql 5.7以降はデフォルトでユーザーに与えられる権限が狭く，wordmoveでエラーが出るためである．
 シェルスクリプト`mysql_fix.sh`はwordmoveを使うための最小の準備をする．
 その後，wordmoveを使うことができる．
 
