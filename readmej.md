@@ -15,7 +15,7 @@ root@brabra: exit
 
 ## このレポジトリについて
 
-WordPressとwordmoveを持つDockerコンテナです．`.env`ファイルに環境固有の変数をまとめてあるので委嘱が容易です．wordmoveではsshとftpが利用できますが，このレポジトリではftpを使っています．macOSでテストしています．
+WordPressとwordmoveを持つDockerコンテナです．`.env`ファイルに環境固有の変数をまとめてあるので移植が容易です．wordmoveではsshとftpが利用できますが，このレポジトリではftpを使っています．macOSでテストしています．
 
 ### 警告
 
