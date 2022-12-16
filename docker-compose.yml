@@ -63,7 +63,7 @@ services:
     tty: true
     depends_on:
       - wordpress
-    # container_name: "${PRODUCTION_NAME}_wm"
+    container_name: "${PRODUCTION_NAME}_wm"
     volumes:
       - ./config:/html
       - ./data/wordpress:/var/www/html
