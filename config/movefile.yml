@@ -73,4 +73,5 @@ production:
     password: "<%= ENV['PRODUCTION_FTP_PASSWORD'] %>"
     port: <%= ENV['PRODUCTION_FTP_PORT'] %>
     passive: true
-    scheme: "ftps"
+    scheme: "ftp"
+    # scheme: "ftps"
