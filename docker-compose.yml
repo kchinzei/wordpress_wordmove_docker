@@ -25,7 +25,7 @@ version: "3.9"
 services:
   db:
     # platform: linux/x86_64
-    image: mysql:5.7
+    image: mysql:latest
     volumes:
       - ./data/mysql:/var/lib/mysql
     restart: always
@@ -43,7 +43,9 @@ services:
     depends_on:
       - db
     # platform: linux/x86_64
-    image: wordpress:latest
+    # image: wordpress:latest
+    build: .
+    container_name: "${PRODUCTION_NAME}_wp"
     ports:
       - "${WORDPRESS_PORT}:80"
     volumes:
@@ -57,7 +59,7 @@ services:
       TZ: "Asia/Tokyo"
 
   wordmove:
-    image: welaika/wordmove
+    image: welaika/wordmove:latest
     tty: true
     depends_on:
       - wordpress
@@ -88,7 +90,7 @@ services:
     # To access this ssh,
     #   docker exec -it (container name of wordmove) /bin/bash
     # Container name of wordmove should look like
-    # ${PRODUCTION_NAME}_wordmove_1, where (${PRODUCTION_NAME} is in .env file)
+    # ${PRODUCTION_NAME}_wm, where (${PRODUCTION_NAME} is in .env file)
     # You can find it when you run 'docker-compose up -d'.
 
 #volumes:
