@@ -1,4 +1,4 @@
-# WordPress + WordMove using ftp on Docker
+# WordPress + wp-cli + WordMove using ftp on Docker
 
 日本語の説明は[こちら](readmej.md)
 
@@ -6,9 +6,12 @@
 
 ```shell
 > docker-compose up -d
-> docker exec -it (PRODUCTION_NAME)_wordmove_1 /bin/bash
+> docker exec -it (PRODUCTION_NAME)_wm /bin/bash
 root@brabra: ./mysql_fix.sh
 root@brabra: wordmove pull --all
+root@brabra: exit
+> docker exec -it (PRODUCTION_NAME)_wp /bin/bash
+root@brabra: wp help --allow-root
 root@brabra: exit
 > docker-compose stop
 ```
@@ -27,6 +30,23 @@ Ftp is not secure and already obsolete in WordMove. Ssh transfer is recommended 
 
 Edit `.env` file.
 
+## For multi-site setting
+
+You first build and set up a single-site wrodpress site in docker.
+After stopping the container, you uncomment two lines in `docker-compose.yml`.
+Then restart the container by `docker-compose up -d`.
+
+```yml
+volumes:
+      - ./data/wordpress:/var/www/html
+      # For multisite, uncomment following AFTER INITIAL SITE SETUP
+      #- ./config/wp_multisite/htaccess_multisite:/var/www/html/.htaccess
+      #- ./config/wp_multisite/wp-config_multisite.php:/var/www/html/wp-config.php
+```
+
+Don't uncomment before first setting up of the wordpress,
+because it will append single-site setting after the multisite setting.
+
 ### Warning
 
 `.env` file contains critical information such as password. NEVER PUT IT IN GITHUB. For this purpose there is a `.gitignore` file.
@@ -36,7 +56,7 @@ Edit `.env` file.
 There are three containers as defined in `docker-compose.yml`.
 
 - `db`: Mysql server
-- `wp`: WordPress server
+- `wp`: WordPress server + wp-cli
 - `wm`: Wordmove host.
 
 You need to login to wordmove container (by `docker exec -it...`).

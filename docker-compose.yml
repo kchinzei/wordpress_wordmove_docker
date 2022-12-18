@@ -50,6 +50,9 @@ services:
       - "${WORDPRESS_PORT}:80"
     volumes:
       - ./data/wordpress:/var/www/html
+      # For multisite, uncomment following AFTER INITIAL SITE SETUP
+      #- ./config/wp_multisite/htaccess_multisite:/var/www/html/.htaccess
+      #- ./config/wp_multisite/wp-config_multisite.php:/var/www/html/wp-config.php
     restart: always
     environment:
       WORDPRESS_DB_HOST: "db:3306"
