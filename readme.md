@@ -28,7 +28,8 @@ Ftp is not secure and already obsolete in WordMove. Ssh transfer is recommended 
 
 ## To use this as a template
 
-Edit `.env` file.
+Edit `env_template.txt` file and rename `.env`.
+You can define `(PRODUCTION_NAME)` in the above example in this file.
 
 ## For multi-site setting
 

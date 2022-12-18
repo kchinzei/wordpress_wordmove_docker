@@ -6,9 +6,12 @@ English version [here](readme.md).
 
 ```shell
 > docker-compose up -d
-> docker exec -it (PRODUCTION_NAME)_wordmove_1 /bin/bash
+> docker exec -it (PRODUCTION_NAME)_wm /bin/bash
 root@brabra: ./mysql_fix.sh
 root@brabra: wordmove pull --all
+root@brabra: exit
+> docker exec -it (PRODUCTION_NAME)_wp /bin/bash
+root@brabra: wp help --allow-root
 root@brabra: exit
 > docker-compose stop
 ```
@@ -23,7 +26,8 @@ ftpはセキュアでなく，wordmoveでは既にオブソリートです．ssh
 
 ## このレポジトリをテンプレートとするには
 
-`.env`ファイルを編集してください．
+`env_template.txt`をテンプレートとして編集し，`.env`にrenameしてください.
+上記例の`(PRODUCTION_NAME)`も、この中で定義してあります。
 
 ### 警告
 
