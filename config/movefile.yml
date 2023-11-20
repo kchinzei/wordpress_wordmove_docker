@@ -40,6 +40,8 @@ production:
     password: "<%= ENV['PRODUCTION_DB_PASSWORD'] %>"
     host: "<%= ENV['PRODUCTION_DB_HOST'] %>"
     port: <%= ENV['PRODUCTION_DB_PORT'] %>
+    mysqldump_options: "--ssl=TRUE" # Only available if using SSH
+    mysql_options: "--ssl=TRUE" # mysql command is used to import db
 
   exclude:
     - '.git/'

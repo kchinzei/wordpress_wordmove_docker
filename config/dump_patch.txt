@@ -1,0 +1,15 @@
+--- dump.php.erb	2023-11-20 14:11:30
++++ dump_ssl.php.erb	2023-11-20 14:17:46
+@@ -223,7 +223,11 @@
+ $db_password = '<%= escape_php db[:password] %>';
+ $db_name = '<%= escape_php db[:name] %>';
+ 
+-$connection = new mysqli($db_host, $db_user, $db_password, $db_name, $db_port);
++$connection = mysqli_init();
++if (!$connection->real_connect($db_host, $db_user, $db_password, $db_name, $db_port, NULL, MYSQLI_CLIENT_SSL)) {
++  die("Connect Error: " . mysqli_connect_error());
++}
++
+ $dump = new MySQLDump($connection);
+ $db_file = 'dump.mysql';
+ $dump->save($db_file);

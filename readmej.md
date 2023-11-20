@@ -35,9 +35,9 @@ ftpはセキュアでなく，wordmoveでは既にオブソリートです．ssh
 
 ## マルチサイトの場合
 
-最初に、シングルサイトでwordpressの初期設定を行なってください。
-その後、コンテナを一旦止めた後、`docker-compose.yml`の以下２行をuncommentして、
-`docker-compose up -d`してください。
+最初に，シングルサイトでwordpressの初期設定を行なってください．
+その後，コンテナを一旦止めた後`docker-compose.yml`の以下２行をuncommentして，
+`docker-compose up -d`してください．
 
 ```yml
 volumes:
@@ -47,7 +47,7 @@ volumes:
       #- ./config/wp_multisite/wp-config_multisite.php:/var/www/html/wp-config.php
 ```
 
-この作業を初期設定の前にやると、マルチサイト用の`.htaccess`の後ろにシングルサイト用の設定が追記されてしまいます。
+この作業を初期設定の前にやると，マルチサイト用の`.htaccess`の後ろにシングルサイト用の設定が追記されてしまいます．
 
 ## 仕組み
 
